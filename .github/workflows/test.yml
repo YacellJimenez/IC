@@ -1,26 +1,20 @@
-name: Node.js CI  # Nombre del workflow
+name: Node.js CI
 
 on:
   push:
-    branches: [ dev ]  # Ejecutar acciones al hacer push en la rama dev
+    branches: [ dev ]
   pull_request:
-    branches: [ main ]  # Ejecutar acciones al crear pull request hacia main
+    branches: [ main ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Ejecutar el job en un entorno Ubuntu
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2  # Acción para clonar el repositorio
-
+    - uses: actions/checkout@v2
     - name: Set up Node.js
-      uses: actions/setup-node@v2  # Acción para configurar Node.js
+      uses: actions/setup-node@v2
       with:
-        node-version: '14'  # Especificar la versión de Node.js
-
-    - name: Install dependencies
-      run: npm install  # Comando para instalar dependencias
-
-    - name: Run tests
-      run: npm test  # Comando para ejecutar las pruebas
+        node-version: '14'
+    - run: npm install
+    - run: npm test
